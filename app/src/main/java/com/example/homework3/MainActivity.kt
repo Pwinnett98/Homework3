@@ -17,7 +17,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,7 +26,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.homework3.Data.DataSource
 import com.example.homework3.Model.Reminders
-import com.example.homework3.ui.theme.RemindersTheme
+import com.example.homework3.ui.theme.ReminderTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +46,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 
 @Composable
 fun ReminderApp() {
@@ -66,15 +67,15 @@ fun ReminderList(reminderList: List<Reminders>, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun ReminderCard(reminder: Reminder, modifier: Modifier = Modifier) {
+fun ReminderCard(reminders: Reminders, modifier: Modifier = Modifier) {
     Card(modifier = modifier) {
         Column {
             Image(
-                painter = painterResource(id = reminder.imageResourceId),
-                contentDescription = stringResource(id = reminder.stringResourceId)
+                painter = painterResource(id = reminders.imageResourceId),
+                contentDescription = stringResource(id = reminders.stringResourceId)
             )
             Text(
-                text = stringResource(id = reminder.stringResourceId)
+                text = stringResource(id = reminders.stringResourceId)
                         modifier = Modifier.padding(16.dp),
                 style = MaterialTheme.typography.headlineSmall
             )
@@ -88,9 +89,8 @@ fun ReminderCard(reminder: Reminder, modifier: Modifier = Modifier) {
         }
     }
 }
-
     @Preview
     @Composable
     fun ReminderApp() {
-        ReminderList(DataSource.reminder)
+        ReminderList(DataSource.reminder[1])
     }
