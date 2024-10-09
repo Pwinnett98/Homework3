@@ -3,7 +3,6 @@ package com.example.homework3
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -24,15 +23,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.homework3.Data.DataSource
-import com.example.homework3.Model.Reminders
+import com.example.homework3.data.DataSource
+import com.example.homework3.model.Reminders
 import com.example.homework3.ui.theme.ReminderTheme
-
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             ReminderTheme {
                 // A surface container using the 'background' color from the theme
@@ -47,21 +44,20 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
+@Preview
 @Composable
 fun ReminderApp() {
-
+    ReminderList(DataSource.Reminders)
 }
 
 @Composable
-fun ReminderList(reminderList: List<Reminders>, modifier: Modifier = Modifier) {
+fun ReminderList(ReminderList: List<Reminders>, modifier: Modifier = Modifier) {
     LazyColumn(modifier = modifier) {
-        items(reminderList) {{reminder ->
+        items(ReminderList) {Reminders ->
             ReminderCard(
-                reminder = reminder,
+                reminders = Reminders,
                 modifier = Modifier.padding(8.dp)
             )
-
         }
     }
 }
@@ -72,25 +68,26 @@ fun ReminderCard(reminders: Reminders, modifier: Modifier = Modifier) {
         Column {
             Image(
                 painter = painterResource(id = reminders.imageResourceId),
-                contentDescription = stringResource(id = reminders.stringResourceId)
-            )
-            Text(
-                text = stringResource(id = reminders.stringResourceId)
-                        modifier = Modifier.padding(16.dp),
-                style = MaterialTheme.typography.headlineSmall
-            )
-            Image(
-                painter = painterResource(id = affirmation.imageResourceId),
-                contentDescription = stringResource(affirmation.stringResourceId),
+                contentDescription = stringResource(id = reminders.stringResourceId),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(194.dp)
                     .background(Color.Black),
+                //contentScale is commented out on purpose. You can uncomment it or change it
+                //to try different looks for the image.
+                //contentScale = ContentScale.Crop
+            )
+            Text(
+                text = stringResource(id = reminders.stringResourceId),
+                modifier = Modifier.padding(16.dp),
+                style = MaterialTheme.typography.headlineSmall
+            )
         }
     }
 }
-    @Preview
-    @Composable
-    fun ReminderApp() {
-        ReminderList(DataSource.reminder[1])
-    }
+
+@Preview
+@Composable
+fun ReminderCardPreview() {
+    ReminderCard(reminders = DataSource.Reminders[0])
+}

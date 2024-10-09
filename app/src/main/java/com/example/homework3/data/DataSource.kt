@@ -1,7 +1,7 @@
-package com.example.homework3.Data
+package com.example.homework3.data
 
 import com.example.homework3.R
-import com.example.homework3.Model.Reminders
+import com.example.homework3.model.Reminders
 
 object DataSource {
     val Reminders = listOf(

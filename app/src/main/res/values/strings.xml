@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name"> Reminders</string>
     <string name="day1">Monday</string>
     <string name="day2">Tuesday</string>
     <string name="day3">Wednesday</string>
