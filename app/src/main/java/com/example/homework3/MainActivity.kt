@@ -51,9 +51,9 @@ fun ReminderApp() {
 }
 
 @Composable
-fun ReminderList(ReminderList: List<Reminders>, modifier: Modifier = Modifier) {
+fun ReminderList(reminderList: List<Reminders>, modifier: Modifier = Modifier) {
     LazyColumn(modifier = modifier) {
-        items(ReminderList) {Reminders ->
+        items(reminderList) {Reminders ->
             ReminderCard(
                 reminders = Reminders,
                 modifier = Modifier.padding(8.dp)
