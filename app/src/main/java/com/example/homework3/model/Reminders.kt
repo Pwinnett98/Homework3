@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
 data class Reminders(
-    @StringRes val stringResourceId: Int,
+    @StringRes val stringResourceName: Int,
     @StringRes val stringResourceId: Int,
     @DrawableRes val imageResourceId: Int,
 )

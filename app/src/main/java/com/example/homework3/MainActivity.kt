@@ -68,17 +68,15 @@ fun ReminderCard(reminders: Reminders, modifier: Modifier = Modifier) {
         Column {
             Image(
                 painter = painterResource(id = reminders.imageResourceId),
-                contentDescription = stringResource(id = reminders.stringResourceId),
+                contentDescription = stringResource(id = reminders.stringResourceName),
+                ContentDescription = stringResource(id = reminders.stringResourceId),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(194.dp)
                     .background(Color.Black),
-                //contentScale is commented out on purpose. You can uncomment it or change it
-                //to try different looks for the image.
-                //contentScale = ContentScale.Crop
             )
             Text(
-                text = stringResource(id = reminders.stringResourceId),
+                text = stringResource(id = reminders.stringResourceName),
                 modifier = Modifier.padding(16.dp),
                 style = MaterialTheme.typography.headlineSmall
             )
