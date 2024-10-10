@@ -66,6 +66,11 @@ fun ReminderList(reminderList: List<Reminders>, modifier: Modifier = Modifier) {
 fun ReminderCard(reminders: Reminders, modifier: Modifier = Modifier) {
     Card(modifier = modifier) {
         Column {
+            Text(
+                text = stringResource(id = reminders.stringResourceId),
+                modifier = Modifier.padding(16.dp),
+                style = MaterialTheme.typography.headlineSmall
+            )
             Image(
                 painter = painterResource(id = reminders.imageResourceId),
                 contentDescription = stringResource(id = reminders.stringResourceId),
@@ -75,7 +80,7 @@ fun ReminderCard(reminders: Reminders, modifier: Modifier = Modifier) {
                     .background(Color.Black),
             )
             Text(
-                text = stringResource(id = reminders.stringResourceId),
+                text = stringResource(id = reminders.stringResourceDes),
                 modifier = Modifier.padding(16.dp),
                 style = MaterialTheme.typography.headlineSmall
             )
